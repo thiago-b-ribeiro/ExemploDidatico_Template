@@ -14,20 +14,40 @@
  * @version 1.0
  */
 
-#ifndef TEMPLATE_H
-#define TEMPLATE_H
+ /**
+  * @attention  A definicao  e a  implementacao da
+  * classe, em templates, devem estar no mesmo ar-
+  * quivo. Isso ocorre porque o compilador precisa
+  * conhecer a implementacao completa da classe no
+  * momento em que ela é instanciada.
+  */
+
+#ifndef TEMPLATE_A_H
+#define TEMPLATE_A_H
 
 template <typename T>
-class MyTemplateClass
+class ClassTemplateA
   {
   public:
-    MyTemplateClass(T& value);
-    ~MyTemplateClass();
+    ClassTemplateA(T& value);
+    ~ClassTemplateA();
 
     T getValue() const;
 
   private:
     T m_value;
   };
+
+template <typename T>
+ClassTemplateA<T>::ClassTemplateA(T& value)
+  : m_value(value)
+  {
+  }
+
+template <typename T>
+T ClassTemplateA<T>::getValue() const
+  {
+  return m_value;
+  }
 
 #endif

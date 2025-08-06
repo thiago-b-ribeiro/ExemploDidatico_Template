@@ -14,23 +14,32 @@
  * @version 1.0
  */
 
-#include "template.h"
+#include "template_A.h"
 #include <iostream>
 #include <string>
+
+template <typename T1, typename T2>
+T1 MethodTemplate(T1& valueA, T2& valueB)
+  {
+  T1 result;
+  result = valueA + valueB;
+  return (result);
+  }
 
 int main(int argc, char* argv[])
   {
   int intValue = 42;
-  MyTemplateClass<int> intInstance(intValue);
-  std::cout << "Integer value: " << intInstance.getValue() << std::endl;
+  // ClassTemplateA<int> intInstance(intValue);
+  ClassTemplateA<int>* intInstance = new ClassTemplateA<int>(intValue);
+  std::cout << "Integer value: " << intInstance->getValue() << std::endl;
 
   double doubleValue = 3.14;
-  MyTemplateClass<double> doubleInstance(doubleValue);
-  std::cout << "Double value: " << doubleInstance.getValue() << std::endl;
+  ClassTemplateA<double>* doubleInstance = new ClassTemplateA<double>(doubleValue);
+  std::cout << "Double value: " << doubleInstance->getValue() << std::endl;
 
   std::string stringValue = "Hello, Templates!";
-  MyTemplateClass<std::string> stringInstance(stringValue);
-  std::cout << "String value: " << stringInstance.getValue() << std::endl;
+  ClassTemplateA<std::string>* stringInstance = new ClassTemplateA<std::string>(stringValue);
+  std::cout << "String value: " << stringInstance->getValue() << std::endl;
 
   return 0;
   }
